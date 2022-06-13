@@ -32,7 +32,10 @@ Console.WriteLine($"guid: {transientGuid.GuidValue} ");
 
 
 var scopedGuid = app.Services.CreateScope().ServiceProvider.GetRequiredService<IScopedGuidGenerator>();
-Console.WriteLine($"guid: {scopedGuid.GuidValue} ");
+Console.WriteLine($"ilk scoped guid: {scopedGuid.GuidValue} ");
+
+var scopedGuid2 = app.Services.CreateScope().ServiceProvider.GetRequiredService<IScopedGuidGenerator>();
+Console.WriteLine($"2. scoped guid: {scopedGuid2.GuidValue} ");
 
 
 app.UseHttpsRedirection();
