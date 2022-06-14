@@ -3,34 +3,37 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Filters.Filters
 {
-    public class IsExistsAttribute : ActionFilterAttribute
+    public class IsExistsAttribute : TypeFilterAttribute
     {
-        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public IsExistsAttribute() : base(typeof(ItemExistsFilter))
         {
-
-            if (!context.ActionArguments.ContainsKey("id"))
-            {
-                context.Result = new BadRequestObjectResult("Id değeri gereklidir");
-                return;
-            }
-            
-            if (!(context.ActionArguments["id"] is int id))
-            {
-                context.Result = new BadRequestObjectResult("Id değeri int olmalıdır");
-                return;
-
-            }      
-           
-            //kontrol et: db'de id'ye ait bir kayıt var mı?
-            
-
-
-
         }
+        //public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        //{
 
-        public override Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
-        {
-            return base.OnResultExecutionAsync(context, next);
-        }
+        //    if (!context.ActionArguments.ContainsKey("id"))
+        //    {
+        //        context.Result = new BadRequestObjectResult("Id değeri gereklidir");
+        //        return;
+        //    }
+
+        //    if (!(context.ActionArguments["id"] is int id))
+        //    {
+        //        context.Result = new BadRequestObjectResult("Id değeri int olmalıdır");
+        //        return;
+
+        //    }
+
+        //    //kontrol et: db'de id'ye ait bir kayıt var mı?
+        //    await next();
+
+
+
+        //}
+
+        //public override Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+        //{
+        //    return base.OnResultExecutionAsync(context, next);
+        //}
     }
 }

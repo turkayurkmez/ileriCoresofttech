@@ -38,5 +38,12 @@ namespace Filters.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [IsExists]
+        public IActionResult Delete(int id)
+        {
+            ViewBag.isDeleted = true;
+            return View();
+        }
     }
 }
