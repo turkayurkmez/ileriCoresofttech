@@ -13,11 +13,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 var connectionString = builder.Configuration.GetConnectionString("db");
 
 builder.Services.AddDbContext<BookStoreDbContext>(conf => conf.UseSqlServer(connectionString));
 builder.Services.AddScoped<IBookRepository, EFBookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
+
+builder.Services.AddResponseCaching();
+builder.Services.AddMemoryCache();
+builder.Services.AddDistributedSqlServerCache(opt =>
+{
+    opt.ConnectionString = builder.Configuration.GetConnectionString("cacheDb");
+    opt.SchemaName = "dbo";
+    opt.TableName = "TestCache";
+  
+});
 
 
 var app = builder.Build();
@@ -32,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseResponseCaching();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

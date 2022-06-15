@@ -65,3 +65,5 @@ C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\
 C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API\obj\Debug\net6.0\BookStore.API.pdb
 C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API\obj\Debug\net6.0\BookStore.API.genruntimeconfig.cache
 C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API\obj\Debug\net6.0\ref\BookStore.API.dll
+C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API\bin\Debug\net6.0\Microsoft.Extensions.Caching.SqlServer.dll
+C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API\bin\Debug\net6.0\Newtonsoft.Json.dll
