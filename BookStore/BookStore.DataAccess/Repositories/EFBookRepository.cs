@@ -42,9 +42,11 @@ namespace BookStore.DataAccess.Repositories
             return await _context.Books.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Book>> GetBooksAsync()
+        public async Task<IEnumerable<Book>> SearchBooksByNameAsync(string name)
         {
-            return await _context.Books.ToListAsync();
+
+            return await _context.Books.Where(x => x.Title.Contains(name, StringComparison.OrdinalIgnoreCase)).ToListAsync();
+
         }
 
         public async Task UpdateAsync(Book entity)

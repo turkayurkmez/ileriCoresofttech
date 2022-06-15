@@ -17,7 +17,7 @@ namespace BookStore.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetBooks()
         {
-            //You ain't gonna need it
+            //You ain't gonna need it: YAGNI
             var books = await _bookService.GetAllBooksAsync();
             return Ok(books);
         }

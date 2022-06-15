@@ -9,6 +9,6 @@ namespace BookStore.DataAccess.Repositories
 {
     public interface IBookRepository : IRepository<Book>
     {
-        Task<IEnumerable<Book>> GetBooksAsync();
+        Task<IEnumerable<Book>> SearchBooksByNameAsync(string name);
     }
 }
