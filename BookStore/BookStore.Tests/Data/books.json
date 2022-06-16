@@ -1,0 +1,36 @@
+[
+  {
+    "Id": 1,
+    "Title": "Denizler Altında 20000 Fersah",
+    "Description": "Bilim Kurgunun ilkleri...",
+    "Price": "100",
+    "Image": "https://i.imgur.com/XyqQZQZ.jpg",
+    "Author": "Jules Verne"
+  },
+  {
+    "Id": 2,
+    "Title": "Küçük Prens",
+    "Description": "Fantastik Çocuk",
+    "Price": "10",
+    "Image": "https://i.imgur.com/XyqQZQZ.jpg",
+    "Author": "Anthony"
+  },
+  {
+    "Id": 3,
+    "Title": "Martı Jonathan",
+    "Description": "Fantastik Çocuk",
+    "Price": "15",
+    "Image": "https://i.imgur.com/XyqQZQZ.jpg",
+    "Author": "Livingston - Richard Bach"
+    
+  }
+]
+
+/*
+   public int Id { get; set; }
+        public string Title { get; set; }
+        public string? Author { get; set; }
+        public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
+        public decimal? Price { get; set; }
+*/

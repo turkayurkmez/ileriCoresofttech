@@ -43,7 +43,7 @@ namespace BookStore.API.Controllers
             var books = await _bookService.GetAllBooksAsync();
 
             _logger.LogWarning($"dönen kitap listesinde, {books.Count()} adet nesne var...");
-            return Ok(new { Books = books, MessageDate = DateTime.Now });
+            return Ok(books);
         }
 
         [HttpGet("InMemory")]

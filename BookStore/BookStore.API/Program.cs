@@ -33,8 +33,8 @@ builder.Services.AddDistributedSqlServerCache(opt =>
 
 var app = builder.Build();
 
-var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookStoreDbContext>();
-CreateDatabase.Create(dbContext);
+//var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookStoreDbContext>();
+//CreateDatabase.Create(dbContext);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -51,3 +51,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+public partial class Program
+{
+
+}

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BookStore.Business\BookStore.Business.csproj" />
+	<InternalsVisibleTo Include="BookStore.Tests" />
   </ItemGroup>
 
 </Project>
