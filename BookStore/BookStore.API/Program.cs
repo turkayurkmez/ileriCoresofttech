@@ -15,26 +15,31 @@ builder.Services.AddSwaggerGen();
 
 
 var connectionString = builder.Configuration.GetConnectionString("db");
+var host = builder.Configuration.GetValue<string>("DefaultSqlHost");
+connectionString = connectionString.Replace("[HOST]", host);
+var port = builder.Configuration.GetValue<int>("DefaultSqlPort");
 
-builder.Services.AddDbContext<BookStoreDbContext>(conf => conf.UseSqlServer(connectionString));
+connectionString = connectionString.Replace("[PORT]", port.ToString());
+Console.WriteLine($"!!!! Dikkat !!!!! Connecting String: {connectionString} ");
+builder.Services.AddDbContext<BookStoreDbContext>(conf => conf.UseSqlServer(connectionString, db=>db.MigrationsAssembly("BookStore.DataAccess")));
 builder.Services.AddScoped<IBookRepository, EFBookRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddResponseCaching();
 builder.Services.AddMemoryCache();
-builder.Services.AddDistributedSqlServerCache(opt =>
-{
-    opt.ConnectionString = builder.Configuration.GetConnectionString("cacheDb");
-    opt.SchemaName = "dbo";
-    opt.TableName = "TestCache";
+//builder.Services.AddDistributedSqlServerCache(opt =>
+//{
+//    opt.ConnectionString = builder.Configuration.GetConnectionString("cacheDb");
+//    opt.SchemaName = "dbo";
+//    opt.TableName = "TestCache";
   
-});
+//});
 
 
 var app = builder.Build();
 
-//var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookStoreDbContext>();
-//CreateDatabase.Create(dbContext);
+var dbContext = app.Services.CreateScope().ServiceProvider.GetRequiredService<BookStoreDbContext>();
+CreateDatabase.Create(dbContext);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

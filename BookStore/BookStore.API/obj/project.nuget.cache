@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ezJl9L8Hv0AyYyeipg9DB88pAa48/QR27uuX7PflBErcoyjYProIbmRHxSRVhEh8qeZdiI7jHWfRi3E2sggLvg==",
+  "dgSpecHash": "3pkTg+LhXYdJ3HGoNOgcO2UAB8tdn7IL/N9FDFyFKwIYBlQ6yn3mV4bmQSTvjlKD1eMXD0LAQQOoGYOj1+T/TA==",
   "success": true,
   "projectFilePath": "C:\\Users\\turka\\source\\repos\\Kurumsal\\Softtech\\Ileri .NET Core\\Part II\\BookStore\\BookStore.API\\BookStore.API.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\turka\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",

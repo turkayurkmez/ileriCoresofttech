@@ -1,5 +1,6 @@
 ﻿using BookStore.API.Models;
 using BookStore.Business;
+using BookStore.Business.Dtos.Requests;
 using BookStore.Business.Dtos.Responses;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
@@ -16,21 +17,22 @@ namespace BookStore.API.Controllers
         private readonly IBookService _bookService;
         private readonly ILogger<BooksController> _logger;
         private readonly IMemoryCache _memoryCache;
-        private readonly IDistributedCache _distributedCache;
+       // private readonly IDistributedCache _distributedCache;
         private object OnEviction;
 
   
 
         public BooksController(IBookService bookService,
                                ILogger<BooksController> logger,
-                               IMemoryCache memCache,
-                               IDistributedCache distributedCache
-                               )
+                               IMemoryCache memCache
+
+
+                               )// IDistributedCache distributedCache
         {
             _bookService = bookService;
             _logger = logger;
             _memoryCache = memCache;
-            _distributedCache = distributedCache;
+            //_distributedCache = distributedCache;
         }
 
         [HttpGet]
@@ -112,28 +114,41 @@ namespace BookStore.API.Controllers
         [HttpGet("FromDistributedCache")]
         public async Task<IActionResult> GetBooksFromDistributedCache()
         {
-            var books = _distributedCache.Get("booksInDistributedCache");
-            //_distributedCache.
-            if (books != null)
-            {
-                string message = Encoding.UTF8.GetString(books);
-                var response = JsonConvert.DeserializeObject<IEnumerable<BookResponse>>(message);
-                return Ok(response);
-            }
-            else
-            {
-                var booksFromService = await _bookService.GetAllBooksAsync();
-                var booksAsJson = JsonConvert.SerializeObject(booksFromService);
-                var booksAsBytes = Encoding.UTF8.GetBytes(booksAsJson);
-                _distributedCache.Set("booksInDistributedCache", booksAsBytes);
+            ////  var books = _distributedCache.Get("booksInDistributedCache");
+            //  //_distributedCache.
+            //  if (books != null)
+            //  {
+            //      string message = Encoding.UTF8.GetString(books);
+            //      var response = JsonConvert.DeserializeObject<IEnumerable<BookResponse>>(message);
+            //      return Ok(response);
+            //  }
+            //  else
+            //  {
+            //      var booksFromService = await _bookService.GetAllBooksAsync();
+            //      var booksAsJson = JsonConvert.SerializeObject(booksFromService);
+            //      var booksAsBytes = Encoding.UTF8.GetBytes(booksAsJson);
+            //      _distributedCache.Set("booksInDistributedCache", booksAsBytes);
 
-                return Ok(booksFromService);
+            //      return Ok(booksFromService);
 
-            }
+            //  }
+
+            return Ok();
 
           
 
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AddBookRequest addBookRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                BookResponse book = await _bookService.AddBookAsync(addBookRequest);                
+                return Ok(book);
+            }
+            return BadRequest(ModelState);
         }
 
     }

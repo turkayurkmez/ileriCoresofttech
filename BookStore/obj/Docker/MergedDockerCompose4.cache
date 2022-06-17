@@ -1,0 +1,52 @@
+services:
+  bookstore.api:
+    build:
+      context: C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part
+        II\BookStore
+      dockerfile: BookStore.API/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: BookStore.API
+      target: base
+    container_name: BookStore.API
+    depends_on:
+      sql-for-bookstore:
+        condition: service_started
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      DefaultSqlHost: sql-for-bookstore
+      DefaultSqlPort: '1453'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: bookstoreapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/BookStore.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 8080
+      target: 80
+    - target: 80
+    - target: 443
+    tty: true
+    volumes:
+    - C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore\BookStore.API:/app:rw
+    - C:\Users\turka\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\turka\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\turka\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\turka\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part II\BookStore:/src:rw
+  sql-for-bookstore:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Pa55W0rd
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+    - published: 1453
+      target: 1433
+version: '3.4'

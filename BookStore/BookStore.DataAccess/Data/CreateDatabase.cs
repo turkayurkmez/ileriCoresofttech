@@ -12,6 +12,8 @@ namespace BookStore.DataAccess.Data
     {
         public static void Create(BookStoreDbContext context)
         {
+            
+            var connectionString = context.Database.GetConnectionString();
             context.Database.Migrate();
 
             if (context.Books.Any())

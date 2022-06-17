@@ -1,5 +1,7 @@
-﻿using BookStore.Business.Dtos.Responses;
+﻿using BookStore.Business.Dtos.Requests;
+using BookStore.Business.Dtos.Responses;
 using BookStore.DataAccess.Repositories;
+using BookStore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,39 @@ namespace BookStore.Business
         public BookService(IBookRepository bookRepository)
         {
             _bookRepository = bookRepository;
+        }
+
+        public async Task<BookResponse> AddBookAsync(AddBookRequest addBookRequest)
+        {
+            var book = new Book
+            {
+                Title = addBookRequest.Title,
+                Author = addBookRequest.Author,
+                Description = addBookRequest.Description,
+                ImageUrl = addBookRequest.ImageUrl,
+                Price = addBookRequest.Price,
+                DiscountRate = addBookRequest.DiscountRate,
+                Stock = addBookRequest.Stock,
+                IsActive = true,
+                CreatedDate = DateTime.Now
+            };
+
+           await _bookRepository.AddAsync(book);
+
+            return new BookResponse
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Author = book.Author,
+                Description = book.Description,
+                ImageUrl = book.ImageUrl,
+                Price = book.Price,
+                DiscountRate = book.DiscountRate               
+            };
+
+
+
+
         }
 
         public async Task<IEnumerable<BookResponse>> GetAllBooksAsync()

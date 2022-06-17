@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3kszYMgt9SSi5tjeh9FJLqjmc06pAmaT0MeO3jgsTgmVlD7uk8M8OONkO6+VjF5jRVI0vK44jWkwaKHUROVMHg==",
+  "dgSpecHash": "G6tYpOupn8BjxvNIi/6V7qvZFppPWzZs0qdL/GOSjkorznBsEmM3CS8NSAtSlmmJOMBZZpAOVGMjn0x25wKCuA==",
   "success": true,
   "projectFilePath": "C:\\Users\\turka\\source\\repos\\Kurumsal\\Softtech\\Ileri .NET Core\\Part II\\BookStore\\BookStore.Tests\\BookStore.Tests.csproj",
   "expectedPackageFiles": [
@@ -59,6 +59,7 @@
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.testplatform.objectmodel\\16.11.0\\microsoft.testplatform.objectmodel.16.11.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.testplatform.testhost\\16.11.0\\microsoft.testplatform.testhost.16.11.0.nupkg.sha512",
+    "C:\\Users\\turka\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\turka\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
