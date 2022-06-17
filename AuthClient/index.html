@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #movies{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="movies"></ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'https://localhost:7082/api/Movies',
+            method: 'GET',
+            headers:{
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            },
+            success: function(response){
+                console.log(response);
+                var movies = response;
+                var output = '';
+                $.each(movies, function(index, movie){
+                    output += `
+                        <li>${movie.name} ${movie.genre}</li>
+                    `;
+                });
+                $('#movies').html(output);
+
+                $('#movies').show();
+            }
+        });  
+    </script>
+</body>
+</html>
