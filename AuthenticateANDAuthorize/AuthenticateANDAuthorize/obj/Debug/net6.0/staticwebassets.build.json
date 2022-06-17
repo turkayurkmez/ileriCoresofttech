@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tda2JZnGKCh+U3ZbcFd6kBemlMCmYMyXJiYu1iupDik=",
+  "Source": "AuthenticateANDAuthorize",
+  "BasePath": "_content/AuthenticateANDAuthorize",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
