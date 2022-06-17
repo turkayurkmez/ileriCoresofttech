@@ -1,0 +1,31 @@
+services:
+  bookstore.api:
+    build:
+      context: C:\Users\turka\source\repos\Kurumsal\Softtech\Ileri .NET Core\Part
+        II\BookStore
+      dockerfile: BookStore.API/Dockerfile
+    depends_on:
+      sql:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DefaultSqlHost: sql
+    image: bookstoreapi
+    ports:
+    - published: 8080
+      target: 80
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\turka\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\turka\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  sql:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Pa55W0rd
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+    - published: 1553
+      target: 1433
+version: '3.4'

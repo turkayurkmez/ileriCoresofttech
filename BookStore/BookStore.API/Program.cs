@@ -17,9 +17,8 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("db");
 var host = builder.Configuration.GetValue<string>("DefaultSqlHost");
 connectionString = connectionString.Replace("[HOST]", host);
-var port = builder.Configuration.GetValue<int>("DefaultSqlPort");
-
-connectionString = connectionString.Replace("[PORT]", port.ToString());
+//var port = builder.Configuration.GetValue<int>("DefaultSqlPort");
+//connectionString = connectionString.Replace("[PORT]", port.ToString());
 Console.WriteLine($"!!!! Dikkat !!!!! Connecting String: {connectionString} ");
 builder.Services.AddDbContext<BookStoreDbContext>(conf => conf.UseSqlServer(connectionString, db=>db.MigrationsAssembly("BookStore.DataAccess")));
 builder.Services.AddScoped<IBookRepository, EFBookRepository>();

@@ -15,8 +15,7 @@ services:
       context: .
       dockerfile: BookStore.API/Dockerfile
     environment:
-      DefaultSqlHost: "sql"
-      DefaultSqlPort: "1433"
+      DefaultSqlHost: "sql"      
       ASPNETCORE_ENVIRONMENT: Development 
     ports:
       - "8080:80"
